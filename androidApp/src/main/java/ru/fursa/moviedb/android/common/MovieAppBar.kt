@@ -1,12 +1,15 @@
 package ru.fursa.moviedb.android.common
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -35,7 +38,8 @@ fun MovieAppBar(
     ) {
         Row(
             modifier = modifier.padding(start = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             AnimatedVisibility(visible = canNavigateBack) {
                 IconButton(onClick = onNavigateBack) {
@@ -44,16 +48,19 @@ fun MovieAppBar(
                         contentDescription = null,
                         tint = MaterialTheme.colors.onBackground
                     )
-                    Spacer(modifier = modifier.width(24.dp))
                 }
 
-                Text(
-                    text = currentScreen.title,
-                    style = MaterialTheme.typography.h6,
-                    modifier = modifier.padding(12.dp),
-                    color = MaterialTheme.colors.onSurface
-                )
             }
+
+            Text(
+                text = currentScreen.title,
+                style = MaterialTheme.typography.h6,
+                modifier = modifier.padding(12.dp),
+                color = MaterialTheme.colors.onSurface
+            )
+
+            Spacer(modifier = modifier.size(120.dp))
+
         }
     }
 }
